@@ -1,4 +1,5 @@
 import logo from "../../assets/logo.png";
+import KR_Logo from "../../assets/KR_Logo.png";
 import { navItems } from "../../constants";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -15,7 +16,7 @@ const Navbar = () => {
       <div className="container px-4 mx-auto relative text-sm">
         <div className="flex justify-between item-center">
           <div className="flex items-center flex-shrink-0">
-            <img className="h-10 w-10 mr-2" src={logo}></img>
+            <img className="h-10 w-10 mr-2" src={KR_Logo}></img>
             <span className="text-xl tracking-tight">Keerthi Realtors</span>
           </div>
           <ul className="hidden lg:flex ml-14 space-x-12 items-center">
