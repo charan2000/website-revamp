@@ -11,55 +11,60 @@ const NavLink = ({ href, className, children }) => (
 
 const NavLogo = () => (
   <div className="flex items-center flex-shrink-0">
-    <img className="h-10 w-10 mr-2" src={KR_Logo} alt="Keerthi Realtors Logo" />
+    <img className="h-12 w-12 mr-2" src={KR_Logo} alt="Keerthi Realtors Logo" />
     <span className="text-xl tracking-tight">Keerthi Realtors</span>
   </div>
 );
 
+const AuthButton = ({ variant = 'outline', children, href = '#' }) => {
+  const baseStyles = "py-2 px-3 rounded-md transition-all duration-300";
+
+  const variants = {
+    outline: `${baseStyles} border 
+      hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] 
+      hover:border-orange-500 
+      hover:text-orange-400`,
+
+    gradient: `${baseStyles} bg-gradient-to-r from-orange-500 to-orange-800 
+      hover:shadow-[0_0_25px_rgba(249,115,22,0.5)] 
+      hover:from-orange-400 
+      hover:to-orange-700`
+  };
+
+  return (
+    <NavLink href={href} className={variants[variant]}>
+      {children}
+    </NavLink>
+  );
+};
+
+const NavItems = ({ className, itemClassName }) => (
+  <ul className={className}>
+    {navItems.map((item) => (
+      <li key={item.label} className={itemClassName}>
+        <NavLink href={item.href}>{item.label}</NavLink>
+      </li>
+    ))}
+  </ul>
+);
+
 const DesktopNav = () => (
   <>
-    <ul className="hidden lg:flex ml-14 space-x-12 items-center">
-      {navItems.map((item) => (
-        <li key={item.label}>
-          <NavLink href={item.href}>{item.label}</NavLink>
-        </li>
-      ))}
-    </ul>
+    <NavItems className="hidden lg:flex ml-14 space-x-12 items-center font-medium" />
     <div className="hidden lg:flex justify-center space-x-12 items-center">
-      {/* Todo: Add link to go to sign in component */}
-      <NavLink href="#" className="py-2 px-3 border rounded-md">
-        Sign In
-      </NavLink>
-      <NavLink
-        href="#"
-        className="bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md"
-      >
-        Create an Account
-      </NavLink>
+      <AuthButton variant="outline">Sign In</AuthButton>
+      <AuthButton variant="gradient">Create an Account</AuthButton>
     </div>
   </>
 );
 
 const MobileNav = ({ isOpen }) => (
   isOpen && (
-    <div className="fixed right-0 z-20 flex flex-col w-full p-12 bg-neutral-900 justify-center items-center lg:hidden">
-      <ul>
-        {navItems.map((item) => (
-          <li key={item.label} className="py-4">
-            <NavLink href={item.href}>{item.label}</NavLink>
-          </li>
-        ))}
-      </ul>
+    <div className="fixed right-0 z-20 flex flex-col w-full p-10 bg-neutral-900 justify-center items-center lg:hidden">
+      <NavItems className="text-lg pb-8 font-medium" itemClassName="py-4" />
       <div className="flex space-x-6">
-        <NavLink href="#" className="py-2 px-3 border rounded-md">
-          Sign In
-        </NavLink>
-        <NavLink
-          href="#"
-          className="py-2 px-3 bg-gradient-to-r from-orange-300 to-orange-600 rounded-md"
-        >
-          Create an Account
-        </NavLink>
+        <AuthButton variant="outline">Sign In</AuthButton>
+        <AuthButton variant="gradient">Create an Account</AuthButton>
       </div>
     </div>
   )
@@ -67,9 +72,7 @@ const MobileNav = ({ isOpen }) => (
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-
   const toggleNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen);
-
   return (
     <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg border-b border-neutral-700/80">
       <div className="container px-4 mx-auto relative text-sm">
