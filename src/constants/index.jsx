@@ -19,6 +19,10 @@ export const navItems = [
   { label: "Testimonials", href: "#" },
 ];
 
+export const heroSectionData = {
+  tagLine: "Transforming real estate investments into lasting wealth through expert guidance and strategic portfolio management"
+};
+
 export const testimonials = [
   {
     user: "John Doe",
