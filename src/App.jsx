@@ -10,6 +10,11 @@ export default function App() {
       <div className="max-w-7xl mx-auto px-6 pt-5">
         <HeroSection />
       </div>
+      {/* <Routes>
+        <Route path="/services" element={<ServicesContainer />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes> */}
     </div>
   );
 }
