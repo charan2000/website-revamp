@@ -2,7 +2,7 @@ import React from 'react';
 import { servicesData } from "../constants";
 
 const ServicesContainer = () => (
-    <div className="mt-10 px-4">
+    <div className="mt-8 px-4">
         <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">{servicesData.title}</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
