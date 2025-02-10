@@ -1,7 +1,8 @@
-import React from "react";
+// import React from "react";
 import { servicesData } from "../constants";
 import { ServicesContainer } from "./ServiceSection";
 import { heroSectionData } from "../constants";
+import ProductSection from "./ProductSection";
 
 const HeroSection = () => {
   return (
@@ -9,7 +10,8 @@ const HeroSection = () => {
       <h1 className="text-4xl sm:text-6xl lg:text-7xl text-center tracking-wide">
         Best In-Class
         <span className="bg-gradient-to-r from-orange-500 to-orange-800 text-transparent [-webkit-background-clip:text] [background-clip:text] font-bold">
-          {" "} Wealth {" "}
+          {" "}
+          Wealth{" "}
         </span>
         Advisors
       </h1>
@@ -18,6 +20,7 @@ const HeroSection = () => {
       </p>
 
       <ServicesContainer />
+      <ProductSection />
     </div>
   );
 };

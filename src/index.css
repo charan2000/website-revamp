@@ -8,3 +8,10 @@
   font-family: "Poppins", "sans-serif";
   color-scheme: dark;
 }
+.custom-slider .slick-slide {
+  padding: 0 10px; /* Adjust the padding value as needed */
+}
+
+.custom-slider .slick-list {
+  margin: 0 -10px; /* Adjust the margin value to match the padding */
+}
