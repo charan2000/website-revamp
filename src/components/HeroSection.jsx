@@ -23,7 +23,7 @@ const Title = memo(() => (
     initial="initial"
     animate="animate"
     transition={{ ...commonTransition, delay: 0.1 }}
-    className="text-center text-5xl sm:text-6xl md:text-[82px] inline-block max-w-5xl font-semibold pt-20 text-white"
+    className="text-center text-5xl sm:text-6xl md:text-[82px] inline-block max-w-4xl font-medium pt-20 text-white"
   >
     Best In-Class
     <GradientText text="Wealth" />
@@ -35,7 +35,7 @@ Title.displayName = "Title";
 
 // Memoized GradientText component
 const GradientText = memo(({ text }) => (
-  <span className="bg-gradient-to-r from-orange-500 to-orange-800 text-transparent [-webkit-background-clip:text] [background-clip:text] font-bold">
+  <span className="bg-gradient-to-r from-orange-500 to-orange-800 text-transparent [-webkit-background-clip:text] [background-clip:text] font-semibold">
     {" "}
     {text}{" "}
   </span>
