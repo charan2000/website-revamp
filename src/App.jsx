@@ -1,24 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { Services, Projects, Locations, Testimonials } from "./pages";
+import { ServicesContainer } from "../src/components/ServiceSection";
 import HeroSection from "./components/HeroSection";
-import Navbar from "./components/header/Navbar";
+import About from "./components/About";
 
 export default function App() {
   return (
-    <div>
-      <Navbar />
-      <div className="max-w-7xl mx-auto px-6 pt-5">
+    <>
+      <div>
         <HeroSection />
+        <About />
+        <ServicesContainer />
       </div>
       {/* <Routes>
         <Route path="/services" element={<ServicesContainer />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes> */}
-    </div>
+    </>
   );
 }
-
 
 // export default function App() {
 //   return (
