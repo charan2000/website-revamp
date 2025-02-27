@@ -125,10 +125,11 @@ const About = () => {
             exit="exit"
             transition={{ duration: 0.4, delay: 0.2 }}
             {...commonAnimationProps}
-            src={assets.brandImage}
-            alt="Brand representation"
-            loading="lazy"
-            className="w-full sm:w-1/2 max-w-lg"
+            src={assets.assetManagement2}
+            className="w-full sm:w-[300px] md:w-[380px] h-auto md:h-[500px] object-cover rounded-2xl shadow-2xl 
+               hover:scale-[1.02] transition-transform duration-300 md:self-start md:mr-auto"
+            // className="w-[380px] h-[500px] object-cover rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            alt="Asset Management"
           />
 
           <motion.div
