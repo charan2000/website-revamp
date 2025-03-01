@@ -93,7 +93,7 @@ const Navbar = () => {
           : "bg-transparent border-transparent"
       }`}
     >
-      <div className="container px-4 pt-4 pb-4 mx-auto relative text-sm">
+      <div className="container px-2.5 pt-2.5 pb-2.5 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           <NavLogo />
           <DesktopNav />
