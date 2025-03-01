@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { number } from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
 import { assets } from "../assets/assets";
 
@@ -28,10 +28,12 @@ const commonAnimationProps = {
 };
 
 const STATS = [
-  { id: 1, number: "10+", text: "Years of Excellence", delay: 0.3 },
-  { id: 2, number: "12+", text: "Projects Completed", delay: 0.35 },
-  { id: 3, number: "20+", text: "Mn. Sq. Ft. Delivered", delay: 0.4 },
-  { id: 4, number: "25+", text: "Ongoing Projects", delay: 0.45 },
+  { id: 1, number: "15+", text: "Years of Excellence", delay: 0.3 },
+  { id: 3, number: "750+", text: "Happy Investers", delay: 0.4 },
+  { id: 2, number: "53+", text: "Diversified Projects", delay: 0.35 },
+  { id: 4, number: "21+", text: "On going Projects", delay: 0.45 },
+  { id: 5, number: "110+", text: "Countries Investors Follow Us", delay: 0.5 },
+  { id: 6, number: "3.81+", text: "Crore Digital Impressions", delay: 0.55 },
 ];
 
 // Memoized StatCard component to prevent unnecessary re-renders
@@ -69,11 +71,11 @@ const AboutHeader = memo(() => (
       exit="exit"
       transition={{ duration: 0.3, delay: 0.1 }}
       {...commonAnimationProps}
-      className="text-2xl sm:text-4xl font-bold mb-2"
+      className="text-2xl sm:text-4xl font-light mb-2"
     >
       About{" "}
-      <span className="underline underline-offset-4 decoration-1 under font-light">
-        Our Brand
+      <span className="underline underline-offset-4 decoration-1 under font-semibold">
+        Keerthi Realtors
       </span>
     </motion.h1>
 
@@ -86,7 +88,7 @@ const AboutHeader = memo(() => (
       {...commonAnimationProps}
       className="text-gray-500 max-w-80 text-center mb-8"
     >
-      Passionate About Properties, Dedicated to Your Vision
+      Advisors for Wealth Creation
     </motion.p>
   </>
 ));
@@ -125,10 +127,9 @@ const About = () => {
             exit="exit"
             transition={{ duration: 0.4, delay: 0.2 }}
             {...commonAnimationProps}
-            src={assets.assetManagement2}
-            className="w-full sm:w-[300px] md:w-[380px] h-auto md:h-[500px] object-cover rounded-2xl shadow-2xl 
-               hover:scale-[1.02] transition-transform duration-300 md:self-start md:mr-auto"
-            // className="w-[380px] h-[500px] object-cover rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            src={assets.assetManagement3}
+            className="w-full sm:w-[300px] md:w-[380px] h-auto object-cover rounded-2xl shadow-2xl 
+               hover:scale-[1.02] transition-transform duration-300 md:self-stretch"
             alt="Asset Management"
           />
 
@@ -152,10 +153,11 @@ const About = () => {
               {...commonAnimationProps}
               className="my-10 max-w-lg text-gray-300"
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Keerthi Realtors is a well Recognised Asset Management firm in
+              Andhra Pradesh, We are a team of professionals with a vision to
+              provide expert solutions to our clients. We are known for our
+              expertise in Asset Management services in real estate segment &
+              our commitment to providing the best services to our clients.
             </motion.p>
 
             <motion.button
