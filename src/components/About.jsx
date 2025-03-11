@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import PropTypes, { number } from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
 import { assets } from "../assets/assets";
@@ -36,22 +36,89 @@ const STATS = [
   { id: 6, number: "3.81+", text: "Crore Digital Impressions", delay: 0.55 },
 ];
 
+// Add this custom hook at the top level of your file
+const useCountAnimation = (endValue, duration = 2000, delay = 0) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    let startTime;
+    let animationFrame;
+
+    const startValue = 0;
+    const endNum = parseFloat(endValue.replace("+", ""));
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+
+      if (progress < duration) {
+        const current = easeOutQuad(progress, startValue, endNum, duration);
+        setCount(current);
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(endNum);
+      }
+    };
+
+    const startAnimation = () => {
+      if (!hasAnimated) {
+        setHasAnimated(true);
+        setTimeout(() => {
+          animationFrame = requestAnimationFrame(animate);
+        }, delay * 1000);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startAnimation();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    const element = document.getElementById(`stat-${endValue}`);
+    if (element) observer.observe(element);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      observer.disconnect();
+    };
+  }, [endValue, duration, delay, hasAnimated]);
+
+  return count;
+};
+
+// Add this easing function
+const easeOutQuad = (t, b, c, d) => {
+  t /= d;
+  return -c * t * (t - 2) + b;
+};
+
 // Memoized StatCard component to prevent unnecessary re-renders
-const StatCard = memo(({ number, text, delay }) => (
-  <motion.div
-    variants={fadeInUp}
-    initial="initial"
-    whileInView="animate"
-    exit="exit"
-    transition={{ duration: 0.6, delay }}
-    {...commonAnimationProps}
-  >
-    <p className="text-4xl font-medium bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text [-webkit-background-clip:text]">
-      {number}
-    </p>
-    <p className="text-gray-300">{text}</p>
-  </motion.div>
-));
+const StatCard = memo(({ number, text, delay }) => {
+  const animatedValue = useCountAnimation(number, 2000, delay);
+
+  return (
+    <motion.div
+      id={`stat-${number}`}
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      transition={{ duration: 0.6, delay }}
+      {...commonAnimationProps}
+    >
+      <p className="text-4xl font-medium bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text [-webkit-background-clip:text]">
+        {Math.round(animatedValue)}
+        {number.includes("+") ? "+" : ""}
+      </p>
+      <p className="text-gray-300">{text}</p>
+    </motion.div>
+  );
+});
 
 StatCard.propTypes = {
   number: PropTypes.string.isRequired,
