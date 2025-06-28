@@ -1,7 +1,7 @@
-import { Menu, X } from "lucide-react";
+import { navItems, contactConfig, logoTitle } from "../constants";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import KR_Logo from "../assets/KR_Logo.png";
-import { navItems } from "../constants";
 
 const NavLink = ({ href, className, children }) => (
   <a href={href} className={className}>
@@ -12,12 +12,12 @@ const NavLink = ({ href, className, children }) => (
 const NavLogo = () => (
   <div className="flex items-center flex-shrink-0">
     <img className="h-12 w-12 mr-2" src={KR_Logo} alt="Keerthi Realtors Logo" />
-    <span className="text-xl tracking-tight">Keerthi Realtors</span>
+    <span className="text-xl tracking-tight">{logoTitle}</span>
   </div>
 );
 
-const AuthButton = ({ variant = "outline", children, href = "#" }) => {
-  const baseStyles = "py-2 px-3 rounded-md transition-all duration-300";
+const AuthButton = ({ variant = "outline", children, href = "#", onClick }) => {
+  const baseStyles = "py-2 px-3 rounded-md transition-all duration-300 flex items-center gap-2";
 
   const variants = {
     outline: `${baseStyles} border 
@@ -31,10 +31,18 @@ const AuthButton = ({ variant = "outline", children, href = "#" }) => {
       hover:to-orange-700`,
   };
 
+  const handleClick = (e) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
-    <NavLink href={href} className={variants[variant]}>
+    <a href={href} className={variants[variant]} onClick={handleClick}>
+      {children === "Contact Us" && <MessageCircle size={16} />}
       {children}
-    </NavLink>
+    </a>
   );
 };
 
@@ -48,26 +56,39 @@ const NavItems = ({ className, itemClassName }) => (
   </ul>
 );
 
-const DesktopNav = () => (
-  <>
-    <NavItems className="hidden lg:flex ml-14 space-x-12 items-center font-medium" />
-    <div className="hidden lg:flex justify-center space-x-12 items-center">
-      <AuthButton variant="outline">Sign In</AuthButton>
-      <AuthButton variant="gradient">Create an Account</AuthButton>
-    </div>
-  </>
-);
+const DesktopNav = () => {
+  const handleWhatsAppClick = () => {
+    window.open(contactConfig.whatsappUrl, '_blank');
+  };
 
-const MobileNav = ({ isOpen }) =>
-  isOpen && (
-    <div className="fixed right-0 z-20 flex flex-col w-full p-10 bg-neutral-900 justify-center items-center lg:hidden">
-      <NavItems className="text-lg pb-8 font-medium" itemClassName="py-4" />
-      <div className="flex space-x-6">
+  return (
+    <>
+      <NavItems className="hidden lg:flex ml-14 space-x-12 items-center font-medium" />
+      <div className="hidden lg:flex justify-center space-x-12 items-center">
         <AuthButton variant="outline">Sign In</AuthButton>
-        <AuthButton variant="gradient">Create an Account</AuthButton>
+        <AuthButton variant="gradient" onClick={handleWhatsAppClick}>Contact Us</AuthButton>
       </div>
-    </div>
+    </>
   );
+};
+
+const MobileNav = ({ isOpen }) => {
+  const handleWhatsAppClick = () => {
+    window.open(contactConfig.whatsappUrl, '_blank');
+  };
+
+  return (
+    isOpen && (
+      <div className="fixed right-0 z-20 flex flex-col w-full p-10 bg-neutral-900 justify-center items-center lg:hidden">
+        <NavItems className="text-lg pb-8 font-medium" itemClassName="py-4" />
+        <div className="flex space-x-6">
+          <AuthButton variant="outline">Sign In</AuthButton>
+          <AuthButton variant="gradient" onClick={handleWhatsAppClick}>Contact Us</AuthButton>
+        </div>
+      </div>
+    )
+  );
+};
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);

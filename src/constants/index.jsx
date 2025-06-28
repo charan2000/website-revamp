@@ -34,7 +34,7 @@ export const servicesData = {
     },
     {
       title: "Career Opportunities",
-      description: "Step into a rewarding career in marketing, regardless of your background. With our guidance, you’ll gain the skills and opportunities to earn a respectable income and achieve professional success."
+      description: "Step into a rewarding career in marketing, regardless of your background. With our guidance, you'll gain the skills and opportunities to earn a respectable income and achieve professional success."
     }
   ]
 };
@@ -200,3 +200,12 @@ export const communityLinks = [
   { href: "#", text: "Hackathons" },
   { href: "#", text: "Jobs" },
 ];
+
+export const logoTitle = "Keerthi Realtors";
+
+export const contactConfig = {
+  whatsappNumber: "+918555883289",
+  contactUsMessage: "Hi! I'm interested in your real estate services. Can you help me?",
+};
+
+contactConfig.whatsappUrl = `https://wa.me/${contactConfig.whatsappNumber}?text=${encodeURIComponent(contactConfig.contactUsMessage)}`;
