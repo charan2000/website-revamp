@@ -1,7 +1,7 @@
-import Navbar from "./Navbar";
+import Navbar from "../navBar/Navbar";
 import React, { memo } from "react";
-import Content from "./hero/Content";
-import { assets } from "../assets/assets";
+import Content from "./Content";
+import { assets } from "../../assets/assets";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Main HeroSection component

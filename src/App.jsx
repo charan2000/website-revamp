@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { Services, Projects, Locations, Testimonials } from "./pages";
 import { ServicesContainer } from "../src/components/ServiceSection";
-import HeroSection from "./components/HeroSection";
+import HeroSection from "./components/heroSection/HeroSection";
 import About from "./components/About";
 
 export default function App() {

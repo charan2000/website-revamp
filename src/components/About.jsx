@@ -153,9 +153,9 @@ const AboutHeader = memo(() => (
       exit="exit"
       transition={{ duration: 0.3, delay: 0.15 }}
       {...commonAnimationProps}
-      className="text-gray-500 max-w-80 text-center mb-8"
+      className="text-gray-400 max-w-100 text-md text-center mb-8"
     >
-      Advisors for Wealth Creation
+      Advisors for Creating Wealth in Real Estate
     </motion.p>
   </>
 ));
