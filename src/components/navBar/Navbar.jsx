@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
-const Navbar = () => {
+const Navbar = ({ bgClass = "" }) => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -21,15 +21,16 @@ const Navbar = () => {
   // Toggles the mobile navigation drawer open/close
   const toggleNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen);
 
+  // If bgClass is provided, use it as the background, otherwise use the default logic
+  const background = bgClass
+    ? bgClass
+    : isScrolled
+    ? "backdrop-blur-lg bg-neutral-600/75 border-neutral-700/80"
+    : "bg-transparent border-transparent";
+
   return (
-    // Navigation bar container with sticky positioning and dynamic styling
     <nav
-      className={`sticky top-0 z-50 py-3 border-b transition-all duration-300
-      ${
-        isScrolled
-          ? "backdrop-blur-lg bg-neutral-600/75 border-neutral-700/80"
-          : "bg-transparent border-transparent"
-      }`}
+      className={`sticky top-0 z-50 py-3 border-b transition-all duration-300 ${background}`}
     >
       {/* Main content container for navbar */}
       <div className="container px-2.5 pt-2.5 pb-2.5 mx-auto relative text-sm">
@@ -42,7 +43,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <MobileNav isOpen={mobileDrawerOpen} />
+        <MobileNav isOpen={mobileDrawerOpen} bgClass={bgClass} />
       </div>
     </nav>
   );

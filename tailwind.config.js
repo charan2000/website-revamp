@@ -39,7 +39,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sora)", ...fontFamily.sans],
+        sans: ["Inter", "sans-serif"],
         code: "var(--font-code)",
         grotesk: "var(--font-grotesk)",
       },

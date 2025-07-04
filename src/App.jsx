@@ -3,37 +3,26 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ServicesContainer } from "../src/components/ServiceSection";
 import HeroSection from "./components/heroSection/HeroSection";
 import About from "./components/About";
+import Services from "./pages/Services";
 
 export default function App() {
   return (
     <>
-      <div>
-        <HeroSection />
-        <About />
-        <ServicesContainer />
-      </div>
-      {/* <Routes>
-        <Route path="/services" element={<ServicesContainer />} />
+      <Routes>
+        <Route path="/" element={landingPage} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes> */}
+        <Route path="/home" element={landingPage} />
+        <Route path="/services" element={<Services />} />
+        {/* Add other routes as needed */}
+      </Routes>
     </>
   );
 }
 
-// export default function App() {
-//   return (
-//     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
-//       {/* Modern background patterns */}
-//       <div className="fixed inset-0 -z-10 overflow-hidden">
-//         <div className="absolute -top-1/2 -right-1/2 w-96 h-96 rounded-full bg-blue-50 blur-3xl opacity-30" />
-//         <div className="absolute -bottom-1/2 -left-1/2 w-96 h-96 rounded-full bg-indigo-50 blur-3xl opacity-30" />
-//       </div>
-
-//       <Navbar />
-//       <div className="max-w-7xl mx-auto px-6 pt-5">
-//         <HeroSection />
-//       </div>
-//     </div>
-//   );
-// }
+const landingPage = (
+  <>
+    <HeroSection />
+    <About />
+    <ServicesContainer />
+  </>
+);
