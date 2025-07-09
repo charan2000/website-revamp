@@ -7,6 +7,7 @@ const Services = () => {
     <div className="flex flex-col min-h-screen font-sans bg-gray-50 text-gray-900">
       {/* Navigation Bar */}
       <Navbar bgClass="bg-blue-800" />
+      {/* <Navbar /> */}
       {/* Main Content Area */}
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">

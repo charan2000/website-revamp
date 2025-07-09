@@ -25,7 +25,7 @@ const Navbar = ({ bgClass = "" }) => {
   const background = bgClass
     ? bgClass
     : isScrolled
-    ? "backdrop-blur-lg bg-neutral-600/75 border-neutral-700/80"
+    ? "backdrop-blur-lg bg-neutral-600/15 border-neutral-700/60"
     : "bg-transparent border-transparent";
 
   return (

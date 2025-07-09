@@ -4,7 +4,9 @@ import { ServicesContainer } from "../src/components/ServiceSection";
 import HeroSection from "./components/heroSection/HeroSection";
 import About from "./components/About";
 import Services from "./pages/ServicesPage";
+import Projects from "./pages/ProjectsPage";
 import ContactUs from "./pages/ContactUsPage";
+import ProjectsListPage from "./pages/ProjectsListPage";
 
 export default function App() {
   return (
@@ -14,7 +16,9 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/home" element={landingPage} />
         <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<ContactUs />} />{" "}
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/projects/:slug" element={<Projects />} />
+        <Route path="/projects" element={<ProjectsListPage />} />
         {/* The new Contact Us page */}
         {/* ... other routes */}
         {/* Add other routes as needed */}
