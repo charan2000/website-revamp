@@ -17,7 +17,8 @@ export const navItems = [
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Locations", href: "/locations" },
-  { label: "Testimonials", href: "/testimonials" },
+  { label: "Contact Us", href: "/contact" },
+  // { label: "Testimonials", href: "/testimonials" },
 ];
 
 export const servicesData = {
@@ -26,21 +27,25 @@ export const servicesData = {
   services: [
     {
       title: "Asset Management",
-      description: "Unlock the potential of your wealth with expert advice on when and where to invest in the right products. From real estate to emerging opportunities, we ensure your assets grow strategically and sustainably."
+      description:
+        "Unlock the potential of your wealth with expert advice on when and where to invest in the right products. From real estate to emerging opportunities, we ensure your assets grow strategically and sustainably.",
     },
     {
       title: "Wealth Creation",
-      description: "Craft your path to financial independence with a personalized wealth-creation plan. Leverage the power of time and strategic investments to multiply your income and secure your future effortlessly."
+      description:
+        "Craft your path to financial independence with a personalized wealth-creation plan. Leverage the power of time and strategic investments to multiply your income and secure your future effortlessly.",
     },
     {
       title: "Career Opportunities",
-      description: "Step into a rewarding career in marketing, regardless of your background. With our guidance, you'll gain the skills and opportunities to earn a respectable income and achieve professional success."
-    }
-  ]
+      description:
+        "Step into a rewarding career in marketing, regardless of your background. With our guidance, you'll gain the skills and opportunities to earn a respectable income and achieve professional success.",
+    },
+  ],
 };
 
 export const heroSectionData = {
-  tagLine: "Transforming real estate investments into lasting wealth through expert guidance and strategic portfolio management"
+  tagLine:
+    "Transforming real estate investments into lasting wealth through expert guidance and strategic portfolio management",
 };
 
 export const testimonials = [
@@ -205,7 +210,10 @@ export const logoTitle = "Keerthi Realtors";
 
 export const contactConfig = {
   whatsappNumber: "+918555883289",
-  contactUsMessage: "Hi! I'm interested in your real estate services. Can you help me?",
+  contactUsMessage:
+    "Hi! I'm interested in your real estate services. Can you help me?",
 };
 
-contactConfig.whatsappUrl = `https://wa.me/${contactConfig.whatsappNumber}?text=${encodeURIComponent(contactConfig.contactUsMessage)}`;
+contactConfig.whatsappUrl = `https://wa.me/${
+  contactConfig.whatsappNumber
+}?text=${encodeURIComponent(contactConfig.contactUsMessage)}`;

@@ -37,6 +37,11 @@ export default {
           12: "#2E2A41",
           13: "#6C7275",
         },
+        // NEW COLOR PALETTE
+        primary: "#102E50", // Deep Forest Green
+        secondary: "#273F4F", // Muted Sage Green
+        accent: "#447D9B", // Goldenrod Yellow
+        light: "#F7F9F7", // Off-White / Light Grey
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

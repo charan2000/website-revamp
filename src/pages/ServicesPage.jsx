@@ -184,28 +184,22 @@ const Services = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-blue-900 text-white py-8 px-4 sm:px-6 lg:px-8 mt-12">
-        <div className="max-w-6xl mx-auto text-center md:flex md:justify-between md:items-center">
-          <div className="mb-4 md:mb-0">
+      {/* Footer - Reusing your existing footer structure */}
+      <footer className="bg-primary text-light py-8 px-4 sm:px-6 lg:px-8 mt-12">
+        <div className="container mx-auto text-center">
+          <div className="mb-4 md:mb-0 text-center">
             <p className="text-lg">
               &copy; 2025 Keerthi Realtors. All rights reserved.
             </p>
           </div>
-          <div className="space-x-6">
-            <a
-              href="#"
-              className="text-blue-200 hover:text-white text-lg transition-colors"
-            >
+          {/* <div className="space-x-6">
+            <a href="#" className="text-light hover:underline text-lg">
               Privacy Policy
             </a>
-            <a
-              href="#"
-              className="text-blue-200 hover:text-white text-lg transition-colors"
-            >
+            <a href="#" className="text-light hover:underline text-lg">
               Terms of Service
             </a>
-          </div>
+          </div> */}
         </div>
       </footer>
     </div>
