@@ -19,7 +19,7 @@ function ContactUs() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-100">
       {/* Hero Section */}
       <Navbar bgClass="darkblue" />
-      <section className="relative pt-20 pb-16 overflow-hidden">
+      <section className="relative pt-20 pb-32 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-900/20 to-blue-900/20"></div>

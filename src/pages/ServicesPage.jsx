@@ -14,7 +14,7 @@ const Services = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-3xl sm:text-7xl lg:text-8xl font-black bg-gradient-to-r from-slate-100 via-emerald-400 to-blue-400 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black bg-gradient-to-r from-slate-100 via-emerald-400 to-blue-400 bg-clip-text text-transparent leading-tight">
               Our Services
             </h1>
             <p className="mt-8 text-xl sm:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
