@@ -111,11 +111,11 @@ const StatCard = memo(({ number, text, delay }) => {
       transition={{ duration: 0.6, delay }}
       {...commonAnimationProps}
     >
-      <p className="text-4xl font-medium bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text [-webkit-background-clip:text]">
+      <p className="text-4xl font-medium bg-gradient-to-r from-emerald-400 to-blue-400 text-transparent bg-clip-text [-webkit-background-clip:text]">
         {Math.round(animatedValue)}
         {number.includes("+") ? "+" : ""}
       </p>
-      <p className="text-gray-300">{text}</p>
+      <p className="text-slate-300">{text}</p>
     </motion.div>
   );
 });
@@ -138,10 +138,10 @@ const AboutHeader = memo(() => (
       exit="exit"
       transition={{ duration: 0.3, delay: 0.1 }}
       {...commonAnimationProps}
-      className="text-2xl sm:text-4xl font-light mb-2"
+      className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-slate-100 via-emerald-400 to-blue-400 bg-clip-text text-transparent leading-tight mb-4"
     >
       About{" "}
-      <span className="underline underline-offset-4 decoration-1 under font-semibold">
+      <span className="block">
         Keerthi Realtors
       </span>
     </motion.h1>
@@ -153,9 +153,10 @@ const AboutHeader = memo(() => (
       exit="exit"
       transition={{ duration: 0.3, delay: 0.15 }}
       {...commonAnimationProps}
-      className="text-gray-400 max-w-100 text-md text-center mb-8"
+      className="text-xl sm:text-2xl text-slate-300 max-w-4xl text-center mb-8 leading-relaxed"
     >
-      Advisors for Creating Wealth in Real Estate
+      Advisors for Creating Wealth in
+      <span className="text-emerald-400 font-semibold"> Real Estate</span>
     </motion.p>
   </>
 ));
@@ -163,9 +164,11 @@ const AboutHeader = memo(() => (
 AboutHeader.displayName = "AboutHeader";
 
 const StatsGrid = memo(() => (
-  <div className="grid grid-cols-2 gap-6 md:gap-10 w-full 2xl:pr-28">
+  <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full mb-8">
     {STATS.map(({ id, number, text, delay }) => (
-      <StatCard key={id} number={number} text={text} delay={delay} />
+      <div key={id} className="bg-slate-700/50 rounded-xl p-4 border border-slate-600/50 text-center">
+        <StatCard number={number} text={text} delay={delay} />
+      </div>
     ))}
   </div>
 ));
@@ -181,64 +184,89 @@ const About = () => {
         exit={{ opacity: 0, y: 50 }}
         transition={{ duration: 0.4 }}
         viewport={{ amount: 0.3, once: false }}
-        className="flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:px-32 w-full"
+        className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden"
         id="About"
       >
-        <AboutHeader />
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-900/10 to-blue-900/10"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AboutHeader />
 
-        <div className="flex flex-col md:flex-row items-center md:items-start md:gap-20">
-          <motion.img
-            variants={fadeInLeft}
-            initial="initial"
-            whileInView="animate"
-            exit="exit"
-            transition={{ duration: 0.4, delay: 0.2 }}
-            {...commonAnimationProps}
-            src={assets.assetManagement3}
-            className="w-full sm:w-[300px] md:w-[380px] h-auto object-cover rounded-2xl shadow-2xl 
-               hover:scale-[1.02] transition-transform duration-300 md:self-stretch"
-            alt="Asset Management"
-          />
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left Side - Image in Card */}
+          <div className="group relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-slate-800/90 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <motion.img
+                variants={fadeInLeft}
+                initial="initial"
+                whileInView="animate"
+                exit="exit"
+                transition={{ duration: 0.4, delay: 0.2 }}
+                {...commonAnimationProps}
+                src={assets.assetManagement3}
+                className="w-full h-auto object-cover rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-300"
+                alt="Asset Management"
+              />
+            </div>
+          </div>
 
-          <motion.div
-            variants={fadeInRight}
-            initial="initial"
-            whileInView="animate"
-            exit="exit"
-            transition={{ duration: 0.4, delay: 0.25 }}
-            {...commonAnimationProps}
-            className="flex flex-col items-center md:items-start mt-10 text-gray-300"
-          >
-            <StatsGrid />
+          {/* Right Side - Stats and Content */}
+          <div className="group relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative bg-slate-800/90 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-500">
+              <motion.div
+                variants={fadeInRight}
+                initial="initial"
+                whileInView="animate"
+                exit="exit"
+                transition={{ duration: 0.4, delay: 0.25 }}
+                {...commonAnimationProps}
+                className="flex flex-col items-start text-slate-300"
+              >
+                <div className="mb-8">
+                  <h2 className="text-3xl lg:text-4xl font-black text-slate-100 mb-4">
+                    Our Achievement
+                  </h2>
+                  <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"></div>
+                </div>
 
-            <motion.p
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              exit="exit"
-              transition={{ duration: 0.3, delay: 0.5 }}
-              {...commonAnimationProps}
-              className="my-10 max-w-lg text-gray-300"
-            >
-              Keerthi Realtors is a well Recognised Asset Management firm in
-              Andhra Pradesh, We are a team of professionals with a vision to
-              provide expert solutions to our clients. We are known for our
-              expertise in Asset Management services in real estate segment &
-              our commitment to providing the best services to our clients.
-            </motion.p>
+                <StatsGrid />
 
-            <motion.button
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              exit="exit"
-              transition={{ duration: 0.3, delay: 0.55 }}
-              {...commonAnimationProps}
-              className="py-2 px-3 rounded-md transition-all duration-300 bg-gradient-to-r from-orange-500 to-orange-800 hover:shadow-[0_0_25px_rgba(249,115,22,0.5)] hover:from-orange-400 hover:to-orange-700"
-            >
-              Learn more
-            </motion.button>
-          </motion.div>
+                <motion.p
+                  variants={fadeInUp}
+                  initial="initial"
+                  whileInView="animate"
+                  exit="exit"
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                  {...commonAnimationProps}
+                  className="my-8 text-lg text-slate-300 leading-relaxed"
+                >
+                  Keerthi Realtors is a well recognized Asset Management firm in
+                  Andhra Pradesh. We are a team of professionals with a vision to
+                  provide expert solutions to our clients. We are known for our
+                  expertise in Asset Management services in real estate segment &
+                  our commitment to providing the best services to our clients.
+                </motion.p>
+
+                <motion.button
+                  variants={fadeInUp}
+                  initial="initial"
+                  whileInView="animate"
+                  exit="exit"
+                  transition={{ duration: 0.3, delay: 0.55 }}
+                  {...commonAnimationProps}
+                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105"
+                >
+                  <span className="relative z-10">Learn More</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.button>
+              </motion.div>
+            </div>
+          </div>
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>

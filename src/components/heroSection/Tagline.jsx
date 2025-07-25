@@ -12,9 +12,12 @@ const Tagline = memo(() => (
     initial="initial"
     animate="animate"
     transition={{ ...commonTransition, delay: 0.2 }}
-    className="mt-10 text-xl lg:text-2xl text-gray-400 text-center max-w-3xl mb-12 mx-auto"
+    className="mt-8 text-xl sm:text-2xl text-slate-300 text-center max-w-4xl mb-12 mx-auto leading-relaxed"
   >
-    {heroSectionData.tagLine}
+    Transforming real estate aspirations into tangible success through
+    <span className="text-emerald-400 font-semibold"> expert-led strategies </span>
+    and
+    <span className="text-blue-400 font-semibold"> comprehensive solutions</span>
   </motion.p>
 ));
 

@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import PropTypes from "prop-types";
 
 const GradientText = memo(({ text }) => (
-  <span className="bg-gradient-to-r from-orange-500 to-orange-800 text-transparent [-webkit-background-clip:text] [background-clip:text] font-semibold">
+  <span className="bg-gradient-to-r from-emerald-400 to-blue-400 text-transparent [-webkit-background-clip:text] [background-clip:text] font-black">
     {" "}
     {text}{" "}
   </span>

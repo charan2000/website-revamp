@@ -6,27 +6,41 @@ import MobileNav from "./MobileNav";
 
 const Navbar = ({ bgClass = "" }) => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
-  // Effect to add a scroll event listener and update isScrolled state
+  // Enhanced scroll effect tracking
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Toggles the mobile navigation drawer open/close
   const toggleNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen);
 
-  // If bgClass is provided, use it as the background, otherwise use the default logic
-  const background = bgClass
-    ? bgClass
-    : isScrolled
-    ? "backdrop-blur-lg bg-neutral-600/15 border-neutral-700/60"
-    : "bg-transparent border-transparent";
+  // Enhanced background logic with scroll-based opacity and blur
+  const getNavbarBackground = () => {
+    if (bgClass === "darkblue") {
+      // For landing page - enhanced scroll effects
+      const scrollProgress = Math.min(scrollY / 100, 1);
+      const opacity = 0.1 + (scrollProgress * 0.8); // From 0.1 to 0.9
+      const blurIntensity = Math.min(scrollY / 50, 1); // Gradually increase blur
+      
+      return scrollY > 10 
+        ? `backdrop-blur-xl bg-slate-900/${Math.round(opacity * 100)} border-slate-700/60 shadow-lg shadow-slate-900/20`
+        : "backdrop-blur-sm bg-slate-900/10 border-transparent";
+    }
+    
+    // Default behavior for other pages
+    return bgClass || (scrollY > 0 
+      ? "backdrop-blur-lg bg-neutral-600/15 border-neutral-700/60" 
+      : "bg-transparent border-transparent");
+  };
+
+  const background = getNavbarBackground();
 
   return (
     <nav
@@ -38,8 +52,12 @@ const Navbar = ({ bgClass = "" }) => {
           <NavLogo />
           <DesktopNav />
           <div className="lg:hidden md:flex flex-col justify-end">
-            <button onClick={toggleNavbar}>
-              {mobileDrawerOpen ? <X /> : <Menu />}
+            <button 
+              onClick={toggleNavbar}
+              className="p-2 rounded-lg text-slate-100 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:bg-slate-700/50 hover:text-emerald-400 transition-all duration-200"
+              aria-label="Toggle mobile menu"
+            >
+              {mobileDrawerOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
